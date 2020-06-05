@@ -8,13 +8,14 @@
           = link_to new_group_path do
             %i.fa.fa-edit
         %li.side-header__box__menu__edit-user
-          = link_to edit_user_path(current_user.id) do
+          = link_to edit_user_path(@group) do
             %i.fa.fa-cog
   .groups
     - current_user.groups.each do |group|
       .group
-        = link_to "#" do
+        = link_to group_messages_path(group) do
           .group__group-name 
             = group.name
           .group__latest-message
-            latest_message
+            = group.messages.select(:content).last
+            = group.show_last_message
