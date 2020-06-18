@@ -1,40 +1,41 @@
 $(function(){
   function buildHTML(message){
     if (message.image){
-      var html = `<div class="message">` +
-        `<div class="message__upper-info">` +
-        `<div class="message__upper-info__talker">` +
-        message.user_name +
-        `</div>` +
-        `<div class="message__upper-info__date">` +
-        message.created_at +
-        `</div>` +
-        `</div>` +
-        `<div class="message__text">` +
-        `<p class="message__text__content">` +
-        message.content +
-        `</p>` +
-        `<img src="` + message.image + `" class="message__text__image" >` +
-        `</div>` +
-        `</div>`
-        return html
-    } else {
-      var html = `<div class="message">` +
-        `<div class="message__upper-info">` +
-        `<div class="message__upper-info__talker">` +
-        message.user_name +
-        `</div>` +
-        `<div class="message__upper-info__date">` +
-        message.created_at +
-        `</div>` +
-        `</div>` +
-        `<div class="message__text">` +
-        `<p class="message__text__content">` +
-        message.content +
-        `</p>` +
-        `</div>` +
-        `</div>`
-        return html
+      var html =
+      `<div class="message">
+        <div class="message__upper-info">
+          <div class="message__upper-info__talker">
+            ${message.user_name}
+          </div>
+        <div class="message__upper-info__date">
+          ${message.created_at}
+        </div>
+      </div>
+      <div class="message__text">
+        <p class="message__text__content">
+          ${message.content}
+        </p>
+        <img src=${message.image} class="message__text__image" >
+      </div>
+    </div>`
+    return html
+  } else {
+    var html = `<div class="message">
+        <div class="message__upper-info">
+          <div class="message__upper-info__talker">
+            ${message.user_name}
+          </div>
+          <div class="message__upper-info__date">
+            ${message.created_at}
+          </div>
+        </div>
+        <div class="message__text">
+          <p class="message__text__content">
+            ${message.content}
+          </p>
+        </div>
+      </div>`
+      return html;
     }
   }
   $("#new_message").on("submit", function(e){
@@ -59,6 +60,8 @@ $(function(){
     })
     .fail(function(){
       alert('error');
+    })
+    .always(function(){
       $('.submit-btn').prop('disabled', false)
     })
   });
