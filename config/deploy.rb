@@ -2,9 +2,6 @@
 # capistranoのバージョンを記載。固定のバージョンを利用し続け、バージョン変更によるトラブルを防止する
 lock '3.14.1'
 
-# secrets.yml用のシンボリックリンクを追加
-set :linked_files, %w{ config/secrets.yml }
-
 # Capistranoのログの表示に利用する
 set :application, 'chat-space'
 
@@ -29,6 +26,8 @@ set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 3
 
+# secrets.yml用のシンボリックリンクを追加
+set :linked_files, %w{ config/secrets.yml }
 # デプロイ処理が終わった後、Unicornを再起動するための記述
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
