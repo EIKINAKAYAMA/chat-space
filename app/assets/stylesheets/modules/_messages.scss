@@ -8,7 +8,7 @@ a{
 
 $side-font: #ffffff;
 $side-back: #253141;
-$group-font:#253141;
+$group-font:#2f3e51;
 $group-back: #ffffff;
 $btn-color:#38aef0;
 
@@ -60,7 +60,7 @@ $btn-color:#38aef0;
     .groups{
       height: calc(100vh - 100px);
       width: 300px;
-      background-color: $side-back;
+      background-color: $group-font;
       padding: 0 20px;
       overflow: scroll;
       .group{
